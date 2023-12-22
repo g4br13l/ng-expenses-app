@@ -1,0 +1,74 @@
+{
+  "groups": [
+    {
+      "id": 1,
+      "title": "Primeiro Título",
+      "spent": "emprestou 10.000",
+      "category": "Home",
+      "status": "pending",
+      "created": "20 dez"
+    },
+    {
+      "id": 2,
+      "title": "Segundo Título",
+      "spent": "emprestou 5.000",
+      "category": "Travel",
+      "status": "pending",
+      "created": "10 dez"
+    },
+    {
+      "id": 3,
+      "title": "Terceiro Título",
+      "spent": "emprestou 2.000",
+      "category": "Leisure",
+      "status": "finished",
+      "created": "15 dez"
+    },{
+      "id": 1,
+      "title": "Primeiro Título",
+      "spent": "emprestou 10.000",
+      "category": "Home",
+      "status": "pending",
+      "created": "20 dez"
+    },
+    {
+      "id": 2,
+      "title": "Segundo Título",
+      "spent": "emprestou 5.000",
+      "category": "Travel",
+      "status": "pending",
+      "created": "10 dez"
+    },
+    {
+      "id": 3,
+      "title": "Terceiro Título",
+      "spent": "emprestou 2.000",
+      "category": "Leisure",
+      "status": "finished",
+      "created": "15 dez"
+    },{
+      "id": 1,
+      "title": "Primeiro Título",
+      "spent": "emprestou 10.000",
+      "category": "Home",
+      "status": "pending",
+      "created": "20 dez"
+    },
+    {
+      "id": 2,
+      "title": "Segundo Título",
+      "spent": "emprestou 5.000",
+      "category": "Travel",
+      "status": "pending",
+      "created": "10 dez"
+    },
+    {
+      "id": 3,
+      "title": "Terceiro Título",
+      "spent": "emprestou 2.000",
+      "category": "Leisure",
+      "status": "finished",
+      "created": "15 dez"
+    }
+  ]
+}
