@@ -1,0 +1,17 @@
+
+
+
+<div class="flex xs:hidden breadcrumbs bg-base-200 py-4 px-5 text-sm text-base-content/50 justify-center">
+
+
+  <div class="w-full px-5 max-w-2xl">
+
+    <ul>
+      <li *ngFor="let item of this.path()">
+        <a [routerLink]="item?.toLowerCase()"> {{item}} </a>
+      </li>
+    </ul>
+
+  </div>
+
+</div>

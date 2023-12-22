@@ -1,0 +1,25 @@
+
+
+<div class="card bg-base-100 hover:bg-neutral cursor-pointer">
+  <div class="card-body flex-row flex-wrap items-center pl-0 pr-2 py-4">
+
+    <!--<span class="hidden text-success"> - </span>-->
+
+    <div class="flex flex-col avatar placeholder mask mask-squircle">
+      <div class="bg-neutral w-12">
+        <span class="material-symbols-rounded symbols-solid text-3xl">home</span>
+      </div>
+    </div>
+
+    <div class="flex flex-col flex-1 min-w-fit">
+      <h1 [ngClass]="[style.color, 'font-semibold']"> {{group.title}} </h1>
+      <span class="text-sm"> {{group.spent}} </span>
+    </div>
+
+    <div class="flex flex-col items-center" [ngClass]="style.color">
+      <span class="material-symbols-rounded symbols-solid"> {{ this.style.icon }} </span>
+      <span class="text-xs"> {{group.status}} </span>
+    </div>
+
+  </div>
+</div>

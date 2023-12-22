@@ -1,0 +1,57 @@
+
+
+
+<div class="flex flex-col gap-8 py-6">
+
+
+  <div class="flex flex-wrap gap-y-6 gap-x-8 text-base-content/50 justify-between">
+
+    <div class="breadcrumbs">
+      <ul>
+        <li><a> Groups Teste2 </a></li>
+        <li><a> New </a></li>
+      </ul>
+    </div>
+
+    <div class="flex flex-col flex-1 justify-end">
+      <a routerLink="/groups/new" class="btn btn-primary self-end">New Group</a>
+    </div>
+
+  </div>
+
+
+  <div class="form-control gap-4">
+    <app-input placeholder="Search..." icon="search" />
+    <div class="flex flex-wrap gap-4">
+      <app-select label="Pending" />
+      <app-select label="Finished" />
+    </div>
+  </div>
+
+
+  <div>
+    @defer (when groups) {
+
+      @for (group of groups; track group.id) {
+        <app-group-item
+          [group]="group"
+          [style]="(group.status == 'pending') ? stylePending :
+                   (group.status == 'finished') ? styleFinished : styleUnknown" />
+      }
+      @empty {
+        <div class="flex flex-col items-center text-accent/60 my-6">
+          <span class="material-symbols-rounded text-6xl font-light">content_paste</span>
+          <span> No registered groups </span>
+        </div>
+      }
+
+    }
+    @placeholder (minimum 1000) {
+      <app-keleton></app-keleton>
+    }
+  </div>
+
+</div>
+
+
+
