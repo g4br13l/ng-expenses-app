@@ -59,12 +59,60 @@ export class GroupListComponent implements OnInit {
 
   fetchAllGroups(): void  {
 
-    /*this.groups = [{  "id": 1,  "title": "Título1", "spent": "emprestou 10.000",
-                      "category": "Home", "status": "pending", "created": "20 dez" }];*/
+    this.groups = [
+      {
+        "id": 1,  "title": "Group expenses 1", "spent": "emprestou 10.000",
+        "category": "Home", "status": "pending", "created": "20 dez"
+      },
+      {
+        "id": 2,  "title": "Group expenses 2", "spent": "emprestou 10.000",
+        "category": "Home", "status": "pending", "created": "20 dez"
+      },
+      {
+        "id": 3,  "title": "Group expenses 3", "spent": "emprestou 10.000",
+        "category": "Home", "status": "finished", "created": "20 dez"
+      },
+      {
+        "id": 4,  "title": "Group expenses 4", "spent": "emprestou 10.000",
+        "category": "Home", "status": "pending", "created": "20 dez"
+      },
+      {
+        "id": 5,  "title": "Group expenses 5", "spent": "emprestou 10.000",
+        "category": "Home", "status": "pending", "created": "20 dez"
+      },
+      {
+        "id": 6,  "title": "Group expenses 6", "spent": "emprestou 10.000",
+        "category": "Home", "status": "finished", "created": "20 dez"
+      },
+      {
+        "id": 1,  "title": "Group expenses 1", "spent": "emprestou 10.000",
+        "category": "Home", "status": "pending", "created": "20 dez"
+      },
+      {
+        "id": 2,  "title": "Group expenses 2", "spent": "emprestou 10.000",
+        "category": "Home", "status": "pending", "created": "20 dez"
+      },
+      {
+        "id": 3,  "title": "Group expenses 3", "spent": "emprestou 10.000",
+        "category": "Home", "status": "finished", "created": "20 dez"
+      },
+      {
+        "id": 4,  "title": "Group expenses 4", "spent": "emprestou 10.000",
+        "category": "Home", "status": "pending", "created": "20 dez"
+      },
+      {
+        "id": 5,  "title": "Group expenses 5", "spent": "emprestou 10.000",
+        "category": "Home", "status": "pending", "created": "20 dez"
+      },
+      {
+        "id": 6,  "title": "Group expenses 6", "spent": "emprestou 10.000",
+        "category": "Home", "status": "finished", "created": "20 dez"
+      }
+    ];
 
-    this.groupService.getAllGroups().subscribe(resp => {
+    /*this.groupService.getAllGroups().subscribe(resp => {
       this.groups = resp;
-    });
+    });*/
   }
 
 
