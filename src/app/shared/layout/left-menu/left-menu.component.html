@@ -1,30 +1,34 @@
 
 
 
-<div class="hidden xs:flex flex-col bg-neutral h-screen">
+<div class="hidden xs:flex flex-col">
 
   <div class="flex p-2">
-    <a class="btn flex md:hidden btn-ghost text-xl">Ex</a>
-    <a class="btn hidden md:flex btn-ghost text-xl">Expenses</a>
+    <a class="btn flex lg:hidden btn-ghost text-xl">
+      <img ngSrc="assets/imgs/ico-v2.png" height="40" width="35" alt="">
+    </a>
+    <a class="btn hidden lg:flex btn-ghost text-xl">
+      <img ngSrc="assets/imgs/logo-horizontal-v2-140x140.png" height="38" width="140" alt="">
+    </a>
   </div>
 
-  <ul class="menu sm:w-fit md:w-56 gap-2 py-8">
+  <ul class="menu flex flex-col lg:w-56 gap-2 py-8">
     <li>
       <a>
         <span class="material-symbols-rounded">contacts_product</span>
-        <span class="hidden md:flex"> Contacts </span>
+        <span class="hidden lg:flex"> Contacts </span>
       </a>
     </li>
     <li>
       <a>
         <span class="material-symbols-rounded">diversity_3</span>
-        <span class="hidden md:flex"> Groups </span>
+        <span class="hidden lg:flex"> Groups </span>
       </a>
     </li>
     <li>
       <a>
         <span class="material-symbols-rounded">query_stats</span>
-        <span class="hidden md:flex"> Summary </span>
+        <span class="hidden lg:flex"> Summary </span>
       </a>
     </li>
   </ul>
