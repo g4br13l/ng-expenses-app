@@ -1,18 +1,31 @@
 import {Component, Input} from '@angular/core';
+import {NgClass} from "@angular/common";
+import {ReactiveFormsModule} from "@angular/forms";
 
 @Component({
   selector: 'app-input',
   standalone: true,
-  imports: [],
+  imports: [
+    NgClass,
+    ReactiveFormsModule
+  ],
   templateUrl: './input.component.html',
 })
+
+
 export class InputComponent {
 
-  /*@Input({required: true})
-  label!: string;*/
+  @Input()
+  name?: string;
 
-  @Input({required: true})
-  placeholder!: string;
+  /*@Input()
+  model: boolean = false;*/
+
+  @Input()
+  label?: string;
+
+  @Input()
+  placeholder: string = '';
 
   @Input()
   icon?: string;

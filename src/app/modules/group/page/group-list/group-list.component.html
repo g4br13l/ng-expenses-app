@@ -9,7 +9,6 @@
     <div class="breadcrumbs">
       <ul>
         <li><a> Groups </a></li>
-        <li><a> New </a></li>
       </ul>
     </div>
 
@@ -21,7 +20,15 @@
 
 
   <div class="form-control gap-4">
-    <app-input placeholder="Search..." icon="search" />
+
+    <div class="form-control w-full relative">
+      <div class="input-left-icon-app">
+        <span class="material-symbols-rounded font-light">search</span>
+      </div>
+      <input type="text" name="title" placeholder="Search..."
+             class="input-text-left-icon-app" (change)="filterByTitle($event)" />
+    </div>
+
     <div class="flex flex-wrap gap-4">
       <app-select label="Pending" />
       <app-select label="Finished" />
@@ -30,9 +37,9 @@
 
 
   <div>
-    @defer (when groups) {
+    @defer (when groupsVisibleSig()) {
 
-      @for (group of groups; track group.id) {
+      @for (group of groupsVisibleSig(); track group.id) {
         <app-group-item
           [group]="group"
           [style]="(group.status == 'pending') ? stylePending :
@@ -46,7 +53,7 @@
       }
 
     }
-    @placeholder (minimum 1000) {
+    @placeholder () {  <!--minimum 1000-->
       <app-keleton></app-keleton>
     }
   </div>

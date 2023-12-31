@@ -1,4 +1,4 @@
-import {ApplicationConfig, importProvidersFrom, isDevMode} from '@angular/core';
+import {ApplicationConfig, importProvidersFrom, isDevMode, makeEnvironmentProviders} from '@angular/core';
 import {
   ActivatedRoute,
   ActivatedRouteSnapshot,
@@ -12,15 +12,18 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import {GroupService} from "./modules/group/group.service";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import { provideServiceWorker, ServiceWorkerModule } from '@angular/service-worker';
-import {AngularFireModule} from "@angular/fire/compat";
+
+import {env} from "../env/env";
+
+import {getFirestore, provideFirestore} from "@angular/fire/firestore";
+import {provideFirebaseApp, getApp, initializeApp} from "@angular/fire/app";
+
+
 
 export const appConfig: ApplicationConfig = {
 
   providers: [
-    provideRouter (
-      routes,
-      withComponentInputBinding()
-    ),
+    provideRouter ( routes, withComponentInputBinding() ),
     provideAnimations(),
 
     { provide: HttpClient, useClass: HttpClient },
@@ -29,16 +32,8 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom (
       HttpClientModule,
       ServiceWorkerModule,
-      /*ServiceWorkerContainer*/
-      AngularFireModule.initializeApp({
-        apiKey: "AIzaSyBKY1S2nKr00p6capmt6_MLTLjkcu69TFY",
-        authDomain: "expenses-app-6300d.firebaseapp.com",
-        databaseURL: "https://expenses-app-6300d-default-rtdb.firebaseio.com",
-        projectId: "expenses-app-6300d",
-        storageBucket: "expenses-app-6300d.appspot.com",
-        messagingSenderId: "789528484957",
-        appId: "1:789528484957:web:ffb9ff793b65042fd081b4"
-      })
+      provideFirebaseApp(() => initializeApp(env.firebase)),
+      provideFirestore(() => getFirestore())
     ),
 
     provideServiceWorker('ngsw-worker.js', {

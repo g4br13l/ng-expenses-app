@@ -1,1 +1,80 @@
-<p>group-new works!</p>
+
+<div class="flex flex-col gap-8 py-6">
+
+
+  <div class="flex flex-wrap gap-y-6 gap-x-8 text-base-content/50 justify-between">
+
+    <div class="breadcrumbs">
+      <ul>
+        <li><a> Groups </a></li>
+        <li><a> New </a></li>
+      </ul>
+    </div>
+
+    <div class="flex flex-col flex-1 justify-end">
+      <a routerLink="/groups" class="btn btn-primary self-end"><= go back</a>
+    </div>
+
+  </div>
+
+  <form #addGroupForm="ngForm" (ngSubmit)="addGroup(addGroupForm)" class="flex flex-col gap-4">
+
+    <!--<div class="form-control">
+      <span class="label label-text">Title</span>
+      <app-input name="title" ngModel />
+    </div>
+    <input type="text" name="search" [value]="search" (keyup)="searchChange($event)" />
+    <input type="text" name="search" [(ngModel)]="search" />
+    <input type="text" name="search" [ngModel]="search" (ngModelChange)="modelChange($event)" />
+    <label>Form Search</label>
+    <input type="text" name="search" [(ngModel)]="formNewGroup.search" />
+    Form search: {{ formNewGroup.search }}-->
+
+    <div class="form-control w-full">
+      <label class="input-label-app"> Title </label>
+      <input type="text" class="input-text-app" name="title" ngModel />
+    </div>
+    Title: {{ this.title }}
+
+    <div class="form-control">
+      <div class="label">
+        <span class="label-text">Category</span>
+      </div>
+      <select name="Category" ngModel class="select-app">
+          <option disabled selected>Select...</option>
+          <option>Home</option>
+          <option>Travel</option>
+          <option>Food</option>
+          <option>Shopping</option>
+          <option>Gift</option>
+          <option>Other</option>
+      </select>
+    </div>
+
+    <!--<div class="form-control w-full">
+      <label class="input-label-app">  Participants </label>
+      <input type="text" name=" participants" class="input-text-app" disabled [(ngModel)]=" participants"/>
+    </div>
+    <div class="badge badge-info py-4 gap-1">
+        <span class="material-symbols-rounded">close</span>
+        <span>Larissa Villa Nova</span>
+    </div>-->
+
+    <div class="stats shadow">
+      <div class="stat">
+        <div class="stat-desc">Status</div>
+        <div class="stat-title text-primary/50">Opened</div>
+      </div>
+      <div class="stat">
+        <div class="stat-desc">Created at</div>
+        <div class="stat-title text-primary/50">12/30/2023</div>
+      </div>
+    </div>
+
+    <button type="submit" class="btn-primary-app" [disabled]="!addGroupForm.valid">
+      save new group
+    </button>
+
+  </form>
+
+</div>
