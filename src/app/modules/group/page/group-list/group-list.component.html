@@ -26,7 +26,7 @@
         <span class="material-symbols-rounded font-light">search</span>
       </div>
       <input type="text" name="title" placeholder="Search..."
-             class="input-text-left-icon-app" (change)="filterByTitle($event)" />
+             class="input-text-left-icon-app" [formControl]="titleSearch" />
     </div>
 
     <div class="flex flex-wrap gap-4">
@@ -36,7 +36,7 @@
   </div>
 
 
-  <div>
+  <div class="flex flex-col p-1 gap-0.5 rounded-lg">
     @defer (when groupsVisibleSig()) {
 
       @for (group of groupsVisibleSig(); track group.id) {

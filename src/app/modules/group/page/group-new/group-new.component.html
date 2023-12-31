@@ -12,7 +12,7 @@
     </div>
 
     <div class="flex flex-col flex-1 justify-end">
-      <a routerLink="/groups" class="btn btn-primary self-end"><= go back</a>
+      <a routerLink="/groups" class="btn btn-primary self-end"><= back</a>
     </div>
 
   </div>
@@ -32,7 +32,7 @@
 
     <div class="form-control w-full">
       <label class="input-label-app"> Title </label>
-      <input type="text" class="input-text-app" name="title" ngModel />
+      <input type="text" class="input-text-app" name="title" [ngModel]="title" />
     </div>
     Title: {{ this.title }}
 
@@ -60,18 +60,18 @@
         <span>Larissa Villa Nova</span>
     </div>-->
 
-    <div class="stats shadow">
+    <div class="stats">
       <div class="stat">
         <div class="stat-desc">Status</div>
-        <div class="stat-title text-primary/50">Opened</div>
+        <div class="stat-title text-primary/60">Opened</div>
       </div>
       <div class="stat">
         <div class="stat-desc">Created at</div>
-        <div class="stat-title text-primary/50">12/30/2023</div>
+        <div class="stat-title text-primary/60">12/30/2023</div>
       </div>
     </div>
 
-    <button type="submit" class="btn-primary-app" [disabled]="!addGroupForm.valid">
+    <button type="submit" class="btn-primary-app max-w-2xl" [disabled]="!addGroupForm.valid">
       save new group
     </button>
 

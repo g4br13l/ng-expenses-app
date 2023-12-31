@@ -45,9 +45,9 @@ export class GroupListComponent implements OnInit {
 
   titleSearch = new FormControl;
 
-  styleFinished: GroupStyle = { 'color': 'text-success', 'icon': 'done' };
-  stylePending: GroupStyle = { 'color': 'text-primary', 'icon': 'attach_money' };
-  styleUnknown: GroupStyle = { 'color': 'text-neutral', 'icon': 'question_mark' };
+  stylePending: GroupStyle = { 'color': 'primary', 'icon': 'attach_money' };
+  styleFinished: GroupStyle = { 'color': 'success', 'icon': 'done' };
+  styleUnknown: GroupStyle = { 'color': 'neutral', 'icon': 'question_mark' };
 
 
 
@@ -55,13 +55,13 @@ export class GroupListComponent implements OnInit {
 
     this.breadCrumbService.setPathSig(['Groups']);
     this.fetchAllGroups();
+    this.titleSearch.valueChanges.pipe(debounceTime(400))
+      .subscribe(searchText => this.filterByTitle(searchText) )
   }
 
 
 
-  protected filterByTitle(event: Event): void {
-
-    const searchText: string = (event.target as HTMLInputElement).value;
+  protected filterByTitle(searchText: string): void {
     console.log(searchText);
 
     this.groupsVisibleSig.update(groups => {
