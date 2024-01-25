@@ -19,28 +19,15 @@
 
   <form [formGroup]="formNewGroup" (ngSubmit)="addGroup(formNewGroup)" class="flex flex-col gap-4">
 
-    <!--<div class="form-control">
-      <span class="label label-text">Title</span>
-      <app-input name="title" ngModel />
-    </div>
-    <input type="text" name="search" [value]="search" (keyup)="searchChange($event)" />
-    <input type="text" name="search" [(ngModel)]="search" />
-    <input type="text" name="search" [ngModel]="search" (ngModelChange)="modelChange($event)" />
-    <label>Form Search</label>
-    <input type="text" name="search" [(ngModel)]="formNewGroup.search" />
-    Form search: {{ formNewGroup.search }}-->
-
     <div class="form-control w-full">
       <label class="input-label-app"> Title </label>
       <input type="text" value="" class="input-text-app" formControlName="title" />
     </div>
 
     <div class="form-control">
-
       <div class="label">
         <span class="label-text">Category</span>
       </div>
-
       <select value="" class="select-app" formControlName="category">
         <!--<option disabled selected>Select...</option>-->
         <option selected>Select...</option>
@@ -48,28 +35,17 @@
           <option>{{category}}</option>
         }
       </select>
-
     </div>
-
-    <!--<div class="form-control w-full">
-      <label class="input-label-app">  Participants </label>
-      <input type="text" name=" participants" class="input-text-app" disabled
-      [(ngModel)]=" participants"/>
-    </div>
-    <div class="badge badge-info py-4 gap-1">
-        <span class="material-symbols-rounded">close</span>
-        <span>Larissa Villa Nova</span>
-    </div>-->
 
     <div class="stats">
       <div class="stat">
         <div class="stat-desc">Status</div>
-        <input type="text" class="stat-title min-w-0 text-primary/60 disabled" aria-disabled="true"
+        <input type="text" class="stat-title min-w-0 text-primary/60 bg-base-100"
                value="" formControlName="status" />
       </div>
       <div class="stat">
         <div class="stat-desc">Created at</div>
-        <input type="text" class="stat-title min-w-0 text-primary/60 disabled"
+        <input type="text" class="stat-title min-w-0 text-primary/60 bg-base-100 text-sm"
                value="" formControlName="created" />
       </div>
     </div>
