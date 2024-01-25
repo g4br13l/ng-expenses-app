@@ -1,0 +1,25 @@
+
+
+
+@if (alertState().show) {
+
+  <div class="toast toast-top toast-center mt-14">
+
+    <div class="flex flex-row alert p-2 gap-2"
+         [ngClass]=" (alertState().type === 'error') ? 'alert-error' :
+                     (alertState().type === 'done') ? 'alert-success' :
+                     (alertState().type === 'info') ? 'alert-info' : 'alert' ">
+
+      <span class="material-symbols-rounded symbols-solid text-3xl"> {{alertState().type}} </span>
+      <span class="flex flex-wrap"> {{ alertState().message }} </span>
+      <!--<a class="material-symbols-rounded">close</a>-->
+
+      <button class="btn btn-sm btn-ghost" (click)="close()">
+        <a class="material-symbols-rounded text-base"> close </a>
+      </button>
+
+    </div>
+
+  </div>
+
+}
