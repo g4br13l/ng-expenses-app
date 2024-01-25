@@ -17,7 +17,7 @@
 
   </div>
 
-  <form #addGroupForm="ngForm" (ngSubmit)="addGroup(addGroupForm)" class="flex flex-col gap-4">
+  <form [formGroup]="formNewGroup" (ngSubmit)="addGroup(formNewGroup)" class="flex flex-col gap-4">
 
     <!--<div class="form-control">
       <span class="label label-text">Title</span>
@@ -32,28 +32,29 @@
 
     <div class="form-control w-full">
       <label class="input-label-app"> Title </label>
-      <input type="text" class="input-text-app" name="title" [ngModel]="title" />
+      <input type="text" value="" class="input-text-app" formControlName="title" />
     </div>
-    Title: {{ this.title }}
 
     <div class="form-control">
+
       <div class="label">
         <span class="label-text">Category</span>
       </div>
-      <select name="Category" ngModel class="select-app">
-          <option disabled selected>Select...</option>
-          <option>Home</option>
-          <option>Travel</option>
-          <option>Food</option>
-          <option>Shopping</option>
-          <option>Gift</option>
-          <option>Other</option>
+
+      <select value="" class="select-app" formControlName="category">
+        <!--<option disabled selected>Select...</option>-->
+        <option selected>Select...</option>
+        @for (category of groupCategory; track groupCategory) {
+          <option>{{category}}</option>
+        }
       </select>
+
     </div>
 
     <!--<div class="form-control w-full">
       <label class="input-label-app">  Participants </label>
-      <input type="text" name=" participants" class="input-text-app" disabled [(ngModel)]=" participants"/>
+      <input type="text" name=" participants" class="input-text-app" disabled
+      [(ngModel)]=" participants"/>
     </div>
     <div class="badge badge-info py-4 gap-1">
         <span class="material-symbols-rounded">close</span>
@@ -63,15 +64,17 @@
     <div class="stats">
       <div class="stat">
         <div class="stat-desc">Status</div>
-        <div class="stat-title text-primary/60">Opened</div>
+        <input type="text" class="stat-title min-w-0 text-primary/60 disabled" aria-disabled="true"
+               value="" formControlName="status" />
       </div>
       <div class="stat">
         <div class="stat-desc">Created at</div>
-        <div class="stat-title text-primary/60">12/30/2023</div>
+        <input type="text" class="stat-title min-w-0 text-primary/60 disabled"
+               value="" formControlName="created" />
       </div>
     </div>
 
-    <button type="submit" class="btn-primary-app max-w-2xl" [disabled]="!addGroupForm.valid">
+    <button type="submit" class="btn-primary-app max-w-2xl" [disabled]="!formNewGroup.valid">
       save new group
     </button>
 

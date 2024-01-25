@@ -14,7 +14,9 @@
 
     <div class="flex flex-col flex-1 justify-end">
       <a routerLink="/groups/new" class="btn btn-primary self-end">New Group</a>
+      <!--<button class="btn btn-primary" (click)="fetchAllGroups()">Fetch Groups</button>-->
     </div>
+
 
   </div>
 
@@ -25,25 +27,25 @@
       <div class="input-left-icon-app">
         <span class="material-symbols-rounded font-light">search</span>
       </div>
-      <input type="text" name="title" placeholder="Search..."
-             class="input-text-left-icon-app" [formControl]="titleSearch" />
+      <input type="search" name="title" placeholder="Search..."
+             class="input-text-left-icon-app" (input)="changeSearch($event, 'title')" />
     </div>
 
     <div class="flex flex-wrap gap-4">
-      <app-select label="Pending" />
+      <app-select label="Pending"  />
       <app-select label="Finished" />
     </div>
   </div>
 
-
   <div class="flex flex-col p-1 gap-0.5 rounded-lg">
-    @defer (when groupsVisibleSig()) {
 
-      @for (group of groupsVisibleSig(); track group.id) {
+    @defer (when groupStore.isLoading() === false) {
+
+      @for (group of groupStore.groups(); track group.id) {
         <app-group-item
           [group]="group"
-          [style]="(group.status == 'pending') ? stylePending :
-                   (group.status == 'finished') ? styleFinished : styleUnknown" />
+          [style]="(group.status === statusGroup.paid) ? groupStyle.success :
+                   (group.status === statusGroup.pending) ? groupStyle.primary : groupStyle.neutral" />
       }
       @empty {
         <div class="flex flex-col items-center text-accent/60 my-6">
@@ -53,9 +55,11 @@
       }
 
     }
-    @placeholder () {  <!--minimum 1000-->
+    @placeholder () {
       <app-keleton></app-keleton>
+      <span class="ml-2 text-base-content/40">Loading ...</span>
     }
+
   </div>
 
 </div>

@@ -16,6 +16,7 @@ import {routes} from "./app.routes";
 import {BreadCrumbComponent} from "./shared/ui/bread-crumb/bread-crumb.component";
 import {log} from "@angular-devkit/build-angular/src/builders/ssr-dev-server";
 import {LeftMenuComponent} from "./shared/layout/left-menu/left-menu.component";
+import {AlertComponent} from "./shared/ui/alert/alert.component";
 
 @Component({
   selector: 'app-root',
@@ -28,6 +29,7 @@ import {LeftMenuComponent} from "./shared/layout/left-menu/left-menu.component";
     GroupListComponent,
     BreadCrumbComponent,
     LeftMenuComponent,
+    AlertComponent,
   ],
   templateUrl: './app.component.html'
 })
@@ -48,14 +50,14 @@ export class AppComponent implements OnInit, AfterViewInit {
 
 
   ngAfterViewInit(): void {
-    try {
+    /*try {
       let path = location.pathname.slice(1);
       this.fullPath = path[0]?.toUpperCase() + path.slice(1);
       console.log('location => ', location);
     }
     catch (e) {
       console.log('ngAfterViewChecked error => ', e);
-    }
+    }*/
   }
 
 

@@ -1,9 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Group} from "../../group";
+import {Group} from "../../data/types/group";
 import {NgClass} from "@angular/common";
-import {GroupStyle} from "../../group-style";
-import {GroupItemStyle} from "../../group-item-style";
-import {toGroupItemStyle} from "../../toGroupItemStyle";
+import {groupStyle, GroupStyleI} from "../../data/types/groupStyle";
 
 
 @Component({
@@ -22,12 +20,15 @@ export class GroupItemComponent {
   @Input({required: true})
   group!: Group;
 
-  @Input({ transform: toGroupItemStyle })
+  @Input({required: false})
+  style: GroupStyleI = groupStyle.neutral;
+
+  /*@Input({ transform: toGroupItemStyle })
   style: GroupItemStyle = {
     'text_color': 'text-neutral',
     'badge_color': 'badge-neutral',
     'icon': 'question_mark'
-  };
+  };*/
 
 
 }

@@ -1,14 +1,15 @@
-import {Component, inject, OnInit, Signal} from '@angular/core';
-import {BreadCrumbService} from "../../../../shared/ui/bread-crumb/bread-crumb.service";
+import {Component, inject, OnInit} from '@angular/core';
 import {GroupItemComponent} from "../../ui/group-item/group-item.component";
 import {InputComponent} from "../../../../shared/ui/input/input.component";
 import {KeletonComponent} from "../../../../shared/ui/keleton/keleton.component";
 import {RouterLink} from "@angular/router";
 import {SelectComponent} from "../../../../shared/ui/select/select.component";
-import {FormsModule} from "@angular/forms";
-import {Firestore, collectionData, collection} from '@angular/fire/firestore'
-import {Observable} from "rxjs";
-import {Group} from "../../group";
+import {FormBuilder, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
+import {Group, groupCategory, statusGroup} from "../../data/types/group";
+import {GroupStoreSig} from "../../data/state/group.storeSig";
+import {DatePipe} from "@angular/common";
+import { Timestamp } from '@angular/fire/firestore';
+import {disableDebugTools} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-group-new',
@@ -19,45 +20,48 @@ import {Group} from "../../group";
     KeletonComponent,
     RouterLink,
     SelectComponent,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   templateUrl: './group-new.component.html'
 })
 
 
 
-export class GroupNewComponent implements OnInit {
+export class GroupNewComponent {
 
-  firestore = inject(Firestore);
+  groupStore = inject(GroupStoreSig);
+  fb = inject(FormBuilder);
+  datePipe = inject(DatePipe);
 
-  group$?: Observable<Group[]>;
-  protected title?: string;
-  protected  category?: string;
-  participants: [] = [];
+  protected readonly statusGroup = statusGroup;
+  protected groupCategory = Object.values(groupCategory);
+
+  protected formNewGroup = this.fb.group({
+    title: [ '', [Validators.required, Validators.minLength(3), Validators.maxLength(100)] ],
+    category: [ '', [Validators.required] ],
+    status: [ {value: statusGroup.opened, disabled: true} , [] ],
+    created:[ {value: this.datePipe.transform(Date.now(), 'dd/MM/yyyy'), disabled: true}, [] ]
+  })
 
 
-  ngOnInit(): void { }
 
+  addGroup(formGroup: any): void {
 
-  addGroup(group: any): void {
-    console.log('group.value => ', group.value);
-    console.log('group.value.title => ', group.value.title);
+    console.log('formGroup.value => ', formGroup.value);
+    console.log('formGroup.getRawValue() => ', formGroup.getRawValue());
 
-
-    try {
-      const itemCollection = collection(this.firestore, 'groups');
-      this.group$ = collectionData(itemCollection) as Observable<Group[]>;
-
-      /*const groupDoc = addDoc(collection(this.firestore, 'groups'), group.value).then(data => {
-        console.log("Document written with ID: ", data.id);
-      })*/
-
-      //console.log("Document written with ID: ", groupDoc.id);
+    const newGroup: Group = {
+      ...formGroup.getRawValue(),
+      spent: 0,
+      created: Timestamp.fromDate(new Date)
     }
-    catch (err) {
 
-    }
+    console.log('newGroup => ', newGroup);
+
+    this.groupStore.addGroupsApi(newGroup, 'groups');
   }
+
 
 
 }
